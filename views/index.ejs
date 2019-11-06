@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Flighty</title>
+
+    <link rel="icon" href="./Flighty/img/font.png">
+
+    <!-- Core Stylesheet -->
+    <link href="style.css" rel="stylesheet">
+
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" type="text/css" href="css/responsive/responsive.css" />
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="dorne-load"></div>
+    </div>
+
+    <!-- ***** Search Form Area ***** -->
+    <div class="dorne-search-form d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="search-close-btn" id="closeBtn">
+                        <i class="pe-7s-close-circle" aria-hidden="true"></i>
+                    </div>
+                    <form action="#" method="get">
+                        <input type="search" name="caviarSearch" id="search" placeholder="Search Your Desire Destinations or Events">
+                        <input type="submit" class="d-none" value="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header_area" id="header">
+        <div class="container-fluid h-100">
+            <div class="row h-100">
+                <div class="col-12 h-100">
+                    <nav class="h-100 navbar navbar-expand-lg">
+                        <a class="navbar-brand" href="index.html"><img src="img/fn.png" alt="" height="24" width="24"></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dorneNav" aria-controls="dorneNav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
+                        <!-- Nav -->
+                        <div class="collapse navbar-collapse" id="dorneNav">
+                            <ul class="navbar-nav mr-auto" id="dorneMenu">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./Flighty/contact.html">Contact</a>
+                                </li>
+                            </ul>
+                            
+                            <!-- Signin btn -->
+                            <div class="dorne-signin-btn">
+                                <a href="login.html">Sign in  or Register</a>
+                            </div>
+                            
+                            
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Welcome Area Start ***** -->
+    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(img/bg-img/hero-1.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-center">
+                <div class="col-12 col-md-10">
+                    <div class="hero-content">
+                        <h2>Discover places near you</h2>
+                        <h4>This is the best guide of your city</h4>
+                    </div>
+                    <!-- Hero Search Form -->
+                    <div class="hero-search-form">
+                        <!-- Tabs -->
+                        <div class="nav nav-tabs" id="heroTab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-places-tab" data-toggle="tab" href="#nav-places" role="tab" aria-controls="nav-places" aria-selected="true">Places</a>
+                           
+                        </div>
+                        <!-- Tabs Content -->
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
+                                <h6>What are you looking for?</h6>
+                                <form action="../index" method="post">
+                                    <select name="startpoint" class="custom-select">
+                                        <option selected>Starting Point</option>
+                                        <option value="Delhi">Delhi</option>
+                                        <option value="Karachi">Karachi</option>
+                                        <option value="Jammu">Jammu</option>
+                                        <option value="Chandigarh">Chandigarh</option>
+                                        <option value="Mumbai">Mumbai</option>
+                                    </select>
+                                    <select name="destpoint" class="custom-select">
+                                        <option selected>Your Destinations</option>
+                                        <option value="Germany">Germany</option>
+                                        <option value="Hawaai">Hawaai</option>
+                                        <option value="Delhi">Delhi</option>
+                                        <option value="Kolkata">Kolkata</option>
+                                        <option value="Dubai">Dubai</option>
+                                        <option value="Chandigarh">Chandigarh</option>
+
+                                    </select>
+                                   <input type="submit" name="submit" value="Submit" class="btn dorne-btn">
+                                </form>
+                            </div>
+			<br>
+                            <form action = '../register.js'>
+                               <table>
+                                   <tr><th>FlightNo</th><th>FlightName</th><th>Start Point </th><th>Destination Point </th><th>Arrival Time</th><th>Departure Time</th><th>Economic Fare</th><th>Business Fare</th><th>Register</th> </tr>
+                                   
+ 				 <% data.forEach(function(item){ %>
+					<tr>
+						<td><%= item.flightno %></td>
+                                                <td><%= item.flightname %></td>
+						<td><%= item.startpoint %></td>
+						<td><%= item.destpoint %></td>
+						<td><%= item.arrivaltime%></td>
+						<td><%= item.depttime%></td>
+						<td><%= item.economicfare %></td>
+						<td><%= item.businessfare %></td>
+						<td><input type="submit" name="submit" value="Book Now"></td></tr>
+					<% });%>	   
+                               </table>
+				</form>		
+
+                                  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero Social Btn -->
+        
+    </section>
+    <!-- ***** Welcome Area End ***** -->
+
+
+
+   
+    
+    <!-- ***** Clients Area End ***** -->
+
+    <!-- ****** Footer Area Start ****** -->
+    <footer class="dorne-footer-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 d-md-flex align-items-center justify-content-between">
+                    <div class="footer-text">
+                        <p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                    <div class="footer-social-btns">
+                        <a href="#"><i class="fa fa-linkedin" aria-haspopup="true"></i></a>
+                        <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-twitter" aria-haspopup="true"></i></a>
+                        <a href="#"><i class="fa fa-facebook" aria-haspopup="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+  
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap-4 js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/others/plugins.js"></script>
+    <!-- Active JS -->
+    <script src="js/active.js"></script>
+</body>
+</html>

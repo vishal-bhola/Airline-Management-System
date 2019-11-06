@@ -1,0 +1,44 @@
+var express = require('express');
+var mysql = require('mysql');
+
+var router = express.Router();
+
+
+var connection = mysql.createConnection({
+host:'localhost',
+user:'root',
+password: 'vishal',
+database: 'airline'
+});
+
+connection.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+
+
+router.get('/login',function(req,res){
+res.write('login.html');
+})
+
+router.post('/',function(req,res){
+
+var username = req.body.uname;
+var password = req.body.pwd;
+if(username && password){
+ connection.query('select * from users where uname = ? and password = ?' , [username ,password],function(err,results){
+
+}
+
+   else{
+
+      res.send('Invalid');
+       }
+
+
+res.end();
+});
+}
+});
+
+module.exports = router;

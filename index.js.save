@@ -1,0 +1,57 @@
+var express = require('express');
+var router = express.Router();
+var mysql = require('mysql');
+var cookieParser = require('cookie-parser');
+
+
+router.use(cookieParser());
+
+router.get('/',function(req,res){
+console.log('In index');
+res.sendFile('./Flighty/index.html',{root:__dirname});
+
+});
+
+
+router.post('/',function(req,res){
+
+var stpoint=req.body.startpoint;
+var destpoint=req.body.destpoint;
+
+
+var connection = mysql.createConnection({
+host:'localhost',
+user:'root',
+password: 'vishal',
+database: 'airline'
+});
+
+
+
+connection.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+
+});
+
+
+  var sql = "select * from flight where startpoint = ? and destpoint= ?";
+  connection.query(sql,[stpoint, destpoint], function (err, result) {
+    if (err) throw err;
+    console.log("1 record inserted");
+        console.log(result);
+
+
+
+     res.writeHead(200, {
+   'Content-Type': 'text/html'});
+
+  res.write(req.cookies.username);
+
+
+res.write("<form action='/form' method='post'><select name='startpoint'><option value='delhi'>Delhi</option><option value='chandigarh'>Chandigarh</option></select><select name='destpoint'><option value='delhi'>Delhi</option><option value= 'chandigarh'>Chandigarh</option></select><input type='submit' name='submit'></form> ");
+
+
+
+
+module.exports =router;

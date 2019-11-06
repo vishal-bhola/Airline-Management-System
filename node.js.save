@@ -1,0 +1,63 @@
+var about = require('./about');
+var express=require('express');
+var morgan =require('morgan');
+
+var bodyParser = require('body-parser');
+var app=express();
+
+app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/about',about);
+
+app.post('/', function(req, res){
+console.log(req.body);
+var st =req.body.startpoint;
+var dst = req.body.destpoint;
+var type=req.body.type;
+
+console.log("request appeared");
+
+
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "vishal",
+  database: "airline"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+  var sql = "select * from flight where startpoint = ? and destpoint= ? and type= ?";
+  con.query(sql,[st, dst,type], function (err, result) {
+    if (err) throw err;
+    console.log("1 record inserted");
+	console.log(result);
+     res.writeHead(200, {
+   'Content-Type': 'text/html'});
+
+
+res.write('<table border=1px>')  
+
+res.write('<tr><th>'+'Flightno'+'</th><th>'+'Flightname'+'</th><th>'+'Start Point'+'</th><th>'+'Destination Point'+'</th><th>Type</th></tr>')
+
+for(var i=0;i<result.length;i++)
+{
+ res.write('<tr><td>'+result[i].flightno+'</td>');
+ res.write('<td>'+result[i].flightname+'</td>');
+ res.write('<td>'+result[i].startpoint+'</td>');
+ res.write('<td>'+result[i].destpoint+'</td>');
+ res.write('<td>'+result[i].type+'</td></tr>');
+
+}
+res.end('</table>');
+  });
+});
+
+
+});
+app.listen(8080);
+console.log('now listening to port 8080');
+
